@@ -7,7 +7,7 @@ from isa import reg_map
 from pydgin.utils import r_uint
 
 page_size   = 8192
-memory_size = 2**29
+memory_size = 2**27
 stack_base  = memory_size-1
 
 #-----------------------------------------------------------------------
@@ -161,7 +161,7 @@ def syscall_init( mem, breakpoint, argv, envp, debug ):
   assert offset == stack_off[6]
 
   # initialize processor state
-  state = State( mem, debug, reset_addr=0x10000 )
+  state = State( mem, debug, reset_addr=0x80000000 )
 
   # TODO: where should this go?
   state.breakpoint = r_uint( breakpoint )
@@ -197,7 +197,7 @@ def test_init( mem, debug ):
 
   # instantiate architectural state with memory and reset address
 
-  state = State( mem, debug, reset_addr=0x200 )
+  state = State( mem, debug, reset_addr=0x80000000 )
 
   return state
 

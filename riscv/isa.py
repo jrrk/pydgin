@@ -168,7 +168,8 @@ def execute_sfence_vm( s, inst ):
   s.pc += 4
 
 def execute_wfi( s, inst ):
-  raise NotImplementedError()
+  print "execute_wfi(%x,%x,%x,%x)" % (s.pc, s.rf[inst.rs1], s.rf[inst.rs2], s.rf[inst.rs3])
+#  raise NotImplementedError()
   s.pc += 4
 
 def execute_mrth( s, inst ):
@@ -185,16 +186,18 @@ def execute_hrts( s, inst ):
 
 def execute_csrrw( s, inst ):
   result = s.rf[inst.rs1]
-  if result & 0x1:
-    status = result >> 1
-    if status: raise FatalError("Fail! %s" % (result >> 1 ) )
-    else:      raise FatalError("Pass!")
-  else:
-    raise NotImplementedError()
+  print "execute_csrrw(%x,%x,%x,%x)" % (s.pc, s.rf[inst.rs1], s.rf[inst.rs2], s.rf[inst.rs3])
+#  if result & 0x1:
+#    status = result >> 1
+#    if status: raise FatalError("Fail! %s" % (result >> 1 ) )
+#   else:      raise FatalError("Pass!")
+# else:
+#   raise NotImplementedError()
   s.pc += 4
 
 def execute_csrrs( s, inst ):
-  raise NotImplementedError()
+  print "execute_csrrs(%x,%x,%x,%x)" % (s.pc, s.rf[inst.rs1], s.rf[inst.rs2], s.rf[inst.rs3])
+#  raise NotImplementedError()
   s.pc += 4
 
 def execute_csrrc( s, inst ):
@@ -202,7 +205,8 @@ def execute_csrrc( s, inst ):
   s.pc += 4
 
 def execute_csrrwi( s, inst ):
-  raise NotImplementedError()
+  print "execute_csrrwi(%x,%x,%x,%x)" % (s.pc, s.rf[inst.rs1], s.rf[inst.rs2], s.rf[inst.rs3])
+#  raise NotImplementedError()
   s.pc += 4
 
 def execute_csrrsi( s, inst ):
@@ -258,7 +262,8 @@ def execute_custom1_rd_rs1( s, inst ):
   s.pc += 4
 
 def execute_custom1_rd_rs1_rs2( s, inst ):
-  raise NotImplementedError()
+  print "execute_custom1_rd_rs1_rs2(%x,%x,%x,%x)" % (s.pc, s.rf[inst.rs1], s.rf[inst.rs2], s.rf[inst.rs3])
+#  raise NotImplementedError()
   s.pc += 4
 
 def execute_custom2( s, inst ):

@@ -71,7 +71,8 @@ class RegisterFile( object ):
 #-----------------------------------------------------------------------
 # Memory
 #-----------------------------------------------------------------------
-def Memory( data=None, size=2**10, byte_storage=False, nbits=32 ):
+def Memory( data=None, size=2**27, byte_storage=False, nbits=32 ):
+  print "memory_size %x\n" % ( size )
   # use sparse storage if not translated
   try:
     from rpython.rlib.objectmodel import we_are_translated

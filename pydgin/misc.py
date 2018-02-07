@@ -38,6 +38,8 @@ def load_program( fp, mem, alignment=0 ):
 
   for section in sections:
     start_addr = section.addr
+    print "section %s, start %x" % ( section.name, start_addr )
+    
     for i, data in enumerate( section.data ):
       mem.write( start_addr+i, 1, ord( data ) )
 

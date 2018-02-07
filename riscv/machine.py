@@ -14,7 +14,7 @@ class State( object ):
   # TODO: add virtualizables
   _virtualizable_ = ['pc', 'num_insts']
 
-  def __init__( self, memory, debug, reset_addr=0x400 ):
+  def __init__( self, memory, debug, reset_addr=0x80000000 ):
     self.pc       = reset_addr
 
     self.xlen     = 64   # defines the bitwidth of int registers
