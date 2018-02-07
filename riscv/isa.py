@@ -11,6 +11,7 @@ from pydgin.utils import (
 )
 
 from helpers import *
+from csr import csr_encodings
 
 import isa_RV32I, isa_RV64I, isa_RV32M, isa_RV64M, isa_RV32A, isa_RV64A
 
@@ -186,18 +187,15 @@ def execute_hrts( s, inst ):
 
 def execute_csrrw( s, inst ):
   result = s.rf[inst.rs1]
-  print "execute_csrrw(%x,%x,%x,%x)" % (s.pc, s.rf[inst.rs1], s.rf[inst.rs2], s.rf[inst.rs3])
-#  if result & 0x1:
-#    status = result >> 1
-#    if status: raise FatalError("Fail! %s" % (result >> 1 ) )
-#   else:      raise FatalError("Pass!")
-# else:
-#   raise NotImplementedError()
+  for i in csr_encodings:
+    if i[1] == inst.i_imm:
+      print "execute_csrrw(0x%x,%s,0x%x,0x%x,0x%x)" % (s.pc, i[0], s.rf[inst.rs1], s.rf[inst.rs2], s.rf[inst.rs3])
   s.pc += 4
 
 def execute_csrrs( s, inst ):
-  print "execute_csrrs(%x,%x,%x,%x)" % (s.pc, s.rf[inst.rs1], s.rf[inst.rs2], s.rf[inst.rs3])
-#  raise NotImplementedError()
+  for i in csr_encodings:
+    if i[1] == inst.i_imm:
+      print "execute_csrrs(0x%x,%s,0x%x,0x%x,0x%x)" % (s.pc, i[0], s.rf[inst.rs1], s.rf[inst.rs2], s.rf[inst.rs3])
   s.pc += 4
 
 def execute_csrrc( s, inst ):
@@ -205,8 +203,9 @@ def execute_csrrc( s, inst ):
   s.pc += 4
 
 def execute_csrrwi( s, inst ):
-  print "execute_csrrwi(%x,%x,%x,%x)" % (s.pc, s.rf[inst.rs1], s.rf[inst.rs2], s.rf[inst.rs3])
-#  raise NotImplementedError()
+  for i in csr_encodings:
+    if i[1] == inst.i_imm:
+      print "execute_csrrwi(0x%x,%s,0x%x,0x%x,0x%x)" % (s.pc, i[0], s.rf[inst.rs1], s.rf[inst.rs2], s.rf[inst.rs3])
   s.pc += 4
 
 def execute_csrrsi( s, inst ):

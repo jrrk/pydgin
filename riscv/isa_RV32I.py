@@ -263,7 +263,8 @@ def execute_scall( s, inst ):
 
 def execute_sbreak( s, inst ):
   print "execute_sbreak(%x,%x,%x,%x)" % (s.pc, s.rf[inst.rs1], s.rf[inst.rs2], s.rf[inst.rs3])
-  raise NotImplementedError()
+  print "goodbye"
+  exit()
   s.pc += 4
 
 
